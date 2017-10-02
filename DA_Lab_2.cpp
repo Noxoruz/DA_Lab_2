@@ -12,25 +12,40 @@ using namespace std;
 //0x33 ^ 0xF0 = (0000 0000 0011 0011 ^ 0000 0000 1111 0000 = 0000 0000 1100 0011) = 0xC3
 
 
-template <typename T> void printlnbits(T v, T x)
+template <typename T> void printlnbits(T v, int x)
 {
 	int *n = (reinterpret_cast<int *>(&v));
 	int *m = (reinterpret_cast<int *>(&x));
-	int *binary = (int*)malloc(sizeof(int)*8);
-	int *binary_1 = (int*)malloc(sizeof(int)*8);
+	int *binary = (int*)malloc(sizeof(int) * 8);
+	int *binary_1 = (int*)malloc(sizeof(int) * 8);
+	int *temp_binary_n = (int*)malloc(sizeof(int) * 8);
+	int *temp_binary_m = (int*)malloc(sizeof(int) * 8);
+	if (x == 0)
+	{
+		cout << "\n Single value function: ";
+		for (int i = 8; i >= 0; i--) {
+			cout << ((*n >> i) & 1);
+		}
+		cout << endl;
+		return;
+	}
+	else
+	{
 
 		for (int i = 8; i >= 0; i--)
 		{
-			binary[i] = ((*n >> i) & 1);
-			binary_1[i] = ((*m >> i) & 1);
-		
+			temp_binary_n[i] = binary[i] = ((*n >> i) & 1);
+			temp_binary_m[i] = binary_1[i] = ((*m >> i) & 1);
+
 		}
+		cout << "int n converted to binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			printf_s("%d", binary[i]);
-			
+
 		}
 		printf("\n");
+		cout << "int m converted to binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			printf_s("%d", binary_1[i]);
@@ -38,6 +53,7 @@ template <typename T> void printlnbits(T v, T x)
 		printf_s("\n");
 
 		//and
+		cout << "And in binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			if (binary[i] != 0 && binary[1] == binary_1[i])
@@ -49,8 +65,10 @@ template <typename T> void printlnbits(T v, T x)
 				cout << "0";
 			}
 		}
+
 		//or
 		printf_s("\n");
+		cout << "OR in binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			if (binary[i] == 1 || binary_1[i] == 1)
@@ -64,6 +82,7 @@ template <typename T> void printlnbits(T v, T x)
 		}
 		//XOR
 		printf_s("\n");
+		cout << "XOR in binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			if (binary[i] == 1 && binary_1[i] != 1 || binary[i] != 1 && binary_1[i] == 1)
@@ -75,7 +94,21 @@ template <typename T> void printlnbits(T v, T x)
 				cout << "0";
 			}
 		}
-	cout << endl;
+		//RIGHT SHIFT BY 4
+		printf_s("\n");
+		cout << "Shifting n by 4 bits to the right: ";
+		int k = 7;
+		for (int i = 4; i > 0; i--)
+		{
+			temp_binary_n[k] = binary[k - i];
+			temp_binary_n[i - 1] = 0;
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			printf_s("%d", temp_binary_n[i]);
+		}
+		cout << endl;
+	}
 }
 typedef struct foo
 {
@@ -90,27 +123,31 @@ int main()
 	const char a = 'a';
 	const int b = -1L;
 	const unsigned c = 1 << 31;
+	const unsigned c_1 = 0;
 	const float d = -0.0f;
 	const long long unsigned e = 1LLU << 40;
 	const foo f;
 	
 	printlnbits(51, 240);
-	/*cout << a << endl;
+
+	cout << "\n\nBit comp completed\n";
+	printlnbits(a, 0);
+	cout << a << endl;
 	cout << "Printing int b -1L: \t\t\t\t\t\t";
-	printlnbits(b);
+	printlnbits(b, 0);
 	cout << b << endl;
 	cout << "Printing const unsigned c 1 << 31: \t\t\t\t";
-	printlnbits(c);
+	printlnbits(c, 0);
 	cout << b << endl;
 	cout << "Printing float d -0.0f: \t\t\t\t\t";
-	printlnbits(d);
+	printlnbits(d, 0);
 	cout << d << endl;
 	cout << "Printing const long long unsigned e = 1LLU << 40: \t\t";
-	printlnbits(e);
+	printlnbits(e, 0);
 	cout << e << endl;
 	cout << "Printing const foo f: \t\t\t\t\t\t";
-	printlnbits(f);
-	cout << "F.a: "  <<f.a << "\tF.b: " << f.b << "\tF.x: " << f.x << endl;*/
+	printlnbits(f, 0);
+	cout << "F.a: "  <<f.a << "\tF.b: " << f.b << "\tF.x: " << f.x << endl;
 	char ok;
 	cin >> ok;
     return 0;
