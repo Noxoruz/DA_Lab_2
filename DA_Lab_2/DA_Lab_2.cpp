@@ -14,16 +14,16 @@ template <typename T> void printlnbits(T v)
 
 	for (int i = 8; i >= 0; i--)
 	{
-		cout << ((*n >> i) & 1);
+		cout << ((*n >> i) & 1) << endl;
 	}
-	cout << end;
+	cout << endl;
 }
 typedef struct foo
 {
 	int a = 2;
 	char b = -1;
 	unsigned long long int x = 1LLU << 63;
-};
+}foo;
 
 
 int main()
