@@ -8,7 +8,7 @@ using namespace std;
 
 #define EXTRABIT(ith,ch) (
 
-template <typename T> void printInbits(T v)
+template <typename T> void printlnbits(T v)
 {
 	int *n = (reinterpret_cast<int *>(&v));
 
@@ -28,6 +28,19 @@ typedef struct foo
 
 int main()
 {
+	const char a = 'a';
+	const int b = -1L; 
+	const unsigned c = 1 << 31; 
+	const float d = -0.0f; 
+	const long long unsigned e = 1LLU << 40; 
+	const foo f; 
+	printlnbits(a); 
+	printlnbits(b); 
+	printlnbits(c); 
+	printlnbits(d); 
+	printlnbits(e); 
+	printlnbits(f); 
+
     return 0;
 }
 
