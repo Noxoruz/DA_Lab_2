@@ -1,4 +1,3 @@
 ﻿  DA_Lab_2.cpp
-d:\da_lab_2\da_lab_2\da_lab_2.cpp(26): warning C4091: 'typedef ': ignored on left of 'foo' when no variable is declared
-  DA_Lab_2.vcxproj -> D:\DA_lab_2\DA_Lab_2\Debug\DA_Lab_2.exe
-  DA_Lab_2.vcxproj -> D:\DA_lab_2\DA_Lab_2\Debug\DA_Lab_2.pdb (Full PDB)
+  DA_Lab_2.vcxproj -> D:\studier\Datavetenskapliga Programmet\Computer Architecture CDT204\DA_Lab_2\Debug\DA_Lab_2.exe
+  DA_Lab_2.vcxproj -> D:\studier\Datavetenskapliga Programmet\Computer Architecture CDT204\DA_Lab_2\Debug\DA_Lab_2.pdb (Partial PDB)
