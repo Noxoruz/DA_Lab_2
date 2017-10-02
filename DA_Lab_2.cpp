@@ -7,9 +7,9 @@
 using namespace std;
 
 
-//0x33 & 0xF0 = (0000 0000 0011 0011 & 0000 0000 1111 0011 = 0000 0000 0011 0000) = 0x30
-//0x33 | 0xF0 = (0000 0000 0011 0011 | 0000 0000 1111 0000 = 0000 0000 1111 0011) = 0xF3
-//0x33 ^ 0xF0 = (0000 0000 0011 0011 ^ 0000 0000 1111 0000 = 0000 0000 1100 0011) = 0xC3
+//0x33 & 0xF0 = (0000 0000 0011 0011 & 0000 0000 1111 0011 = 0000 0000 0011 0000) = 0x30 AND
+//0x33 | 0xF0 = (0000 0000 0011 0011 | 0000 0000 1111 0000 = 0000 0000 1111 0011) = 0xF3 OR
+//0x33 ^ 0xF0 = (0000 0000 0011 0011 ^ 0000 0000 1111 0000 = 0000 0000 1100 0011) = 0xC3 XOR
 
 
 template <typename T> void printlnbits(T v, int x)
@@ -53,7 +53,7 @@ template <typename T> void printlnbits(T v, int x)
 		printf_s("\n");
 
 		//and
-		cout << "And in binary: ";
+		cout << "AND in binary: ";
 		for (int i = 0; i < 8; i++)
 		{
 			if (binary[i] != 0 && binary[1] == binary_1[i])
@@ -98,14 +98,43 @@ template <typename T> void printlnbits(T v, int x)
 		printf_s("\n");
 		cout << "Shifting n by 4 bits to the right: ";
 		int k = 7;
-		for (int i = 4; i > 0; i--)
+
+		for (int i = 3; i >= 0; i--)
 		{
-			temp_binary_n[k] = binary[k - i];
-			temp_binary_n[i - 1] = 0;
+			temp_binary_n[k] = temp_binary_n[i];
+			temp_binary_n[i] = 0;
+			k--;
+			
 		}
 		for (int i = 0; i < 8; i++)
 		{
 			printf_s("%d", temp_binary_n[i]);
+		}
+		printf_s("\n");
+		cout << "Shifting m by 4 bits to the right: ";
+		k = 7;
+		for (int i = 3; i >= 0; i--)
+		{
+			temp_binary_m[k] = temp_binary_m[i];
+			temp_binary_m[i] = 0;
+			k--;
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			printf_s("%d", temp_binary_m[i]);
+		}
+		cout << "\n";
+		cout << "Shifting n by 4 bits to the left: ";
+		k = 4;
+		for (int i = 0; i <= 3; i++)
+		{
+			binary[i] = binary[k];
+			binary[k] = 0;
+			k++;
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			printf_s("%d", binary[i]);
 		}
 		cout << endl;
 	}
