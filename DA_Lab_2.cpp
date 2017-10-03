@@ -3,9 +3,31 @@
 #include <stdio.h>
 #include <iostream>
 #include "stdafx.h"
-#define EXTRABIT(ith,ch)
+#define EXTRACTBIT(ith,ch)
 using namespace std;
 
+///*
+//EXTRACTBIT is a macro (or you can write it as a function)
+//for extracting the ith bit from a given char.
+//*/
+//#define EXTRACTBIT(ith,ch) (((ch >> ith) & 1))
+//
+///*
+//printlnbits is a function which prints the bit representation
+//of a variable (least significant bit must be shown on the right)
+//followed by its size (in bits).
+//*/
+//template <typename T> void printlnbits(T v) {
+//	int *n = (reinterpret_cast<int *>(&v));
+//
+//	for (int i = 7; i >= 0; i--) {
+//		cout << EXTRACTBIT(i, *n);
+//	}
+//	cout << endl;
+//
+//	bitset<8> x(*n);
+//	cout << "bitset: \t" << x;
+//}
 
 //0x33 & 0xF0 = (0000 0000 0011 0011 & 0000 0000 1111 0011 = 0000 0000 0011 0000) = 0x30 AND
 //0x33 | 0xF0 = (0000 0000 0011 0011 | 0000 0000 1111 0000 = 0000 0000 1111 0011) = 0xF3 OR
@@ -157,6 +179,9 @@ int main()
 	const long long unsigned e = 1LLU << 40;
 	const foo f;
 	
+	bitset<8> x(a);
+	cout << "bitset: \t" << x;
+
 	printlnbits(51, 240);
 
 	cout << "\n\nBit comp completed\n";

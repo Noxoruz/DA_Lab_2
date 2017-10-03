@@ -6,12 +6,10 @@
 #pragma once
 
 #include "targetver.h"
-
-#include <stdio.h>
-#include <tchar.h>
+#include <bitset>
 #include <stdio.h>
 #include <iostream>
-#include <bitset>
+#include <tchar.h>
 
 
 
